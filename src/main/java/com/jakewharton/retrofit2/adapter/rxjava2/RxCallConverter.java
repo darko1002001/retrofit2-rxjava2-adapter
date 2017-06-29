@@ -4,7 +4,7 @@ import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public final class RxCallConverter {
+public class RxCallConverter {
 
     public static <R> Observable<Response<R>> toResponseObservable(Call<R> call) {
         return toCallObservable(call);

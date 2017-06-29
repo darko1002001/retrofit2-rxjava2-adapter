@@ -17,8 +17,21 @@ public final class RxCallConverter {
     public static <R> Observable<Result<R>> toResultObservable(Call<R> call) {
         return new ResultObservable<>(toCallObservable(call));
     }
-    
+
+    public <R> Observable<Response<R>> responseObservable(Call<R> call) {
+        return toCallObservable(call);
+    }
+
+    public <R> Observable<R> bodyObservable(Call<R> call) {
+        return new BodyObservable<>(toCallObservable(call));
+    }
+
+    public <R> Observable<Result<R>> resultObservable(Call<R> call) {
+        return new ResultObservable<>(toCallObservable(call));
+    }
+
     private static <R> CallObservable<R> toCallObservable(Call<R> call) {
         return new CallObservable<>(call);
     }
+
 }
